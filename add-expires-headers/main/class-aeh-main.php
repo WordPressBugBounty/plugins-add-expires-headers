@@ -13,6 +13,9 @@ class AEH_Main
     public function __construct()
     {
         $this->settings = AEH_Settings::get_instance();
+        add_action( 'admin_notices', array($this,'add_review_request'));
+		add_action( 'wp_ajax_hide_review_notice', array( $this,'hide_review_request') );
+		add_action( 'wp_ajax_nopriv_hide_review_notice',array( $this,'hide_review_request') );
     }
     
     public function add_review_request()
@@ -26,7 +29,7 @@ class AEH_Main
 				<p>
 					<img style="float:left;margin-right:27px;width: 50px;padding: 0.25em;" src="' . AEH_URL . 'assests/images/AddExpiresHeaders.png">
 					<strong>
-						Hi there! You\'ve been using Add Expires Headers and Optimized Minify Plugin. We hope it\'s been helpful. Would you mind rating it 5-stars to help spread the word?
+						Hi there! You\'ve been using WP Speed Optimization By Add Expires Headers and Optimized Minify Plugin. We hope it\'s been helpful. Would you mind rating it 5-stars to help spread the word?
 					</strong>	
 				</p>
 				<p>
@@ -52,10 +55,10 @@ class AEH_Main
     {
         $nonce = $_REQUEST['security'];
         if ( wp_verify_nonce( $nonce, 'maybelater-nonce' ) ) {
-            update_option( 'review_request_time', strtotime( date( 'd-m-Y H:i:s' ) . "+ 120 hours" ) );
+            update_option( 'review_request_time', strtotime( date( 'd-m-Y H:i:s' ) . "+ 20 hours" ) );
         }
         if ( wp_verify_nonce( $nonce, 'alreadydid-nonce' ) ) {
-            update_option( 'review_request_time', strtotime( date( 'd-m-Y H:i:s' ) . "+ 4800 hours" ) );
+            update_option( 'review_request_time', strtotime( date( 'd-m-Y H:i:s' ) . "+ 720 hours" ) );
         }
     }
     

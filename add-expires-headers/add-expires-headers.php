@@ -1,11 +1,11 @@
 <?php
 
 /*
-Plugin Name: Add Expires Headers & Optimized Minify
+Plugin Name: WP Speed Optimization By Add Expires Headers & Optimized Minify Plugin
 Plugin URI: http://www.addexpiresheaders.com/
 Description: This plugin will add expires headers for various types of resources of website and also help to add optimized minification and merging of resources to have better performance and speed optimization.
 Author: Passionate Brains
-Version: 2.9.1
+Version: 2.9.2
 Author URI: http://www.addexpiresheaders.com/
 License: GPLv2 or later
 */
@@ -39,7 +39,7 @@ if ( function_exists( 'dd_aeh' ) ) {
                     'has_paid_plans'  => true,
                     'trial'           => array(
                     'days'               => 3,
-                    'is_require_payment' => true,
+                    'is_require_payment' => false,
                 ),
                     'has_affiliation' => 'all',
                     'menu'            => array(
@@ -80,7 +80,7 @@ if ( function_exists( 'dd_aeh' ) ) {
         define( 'AEH_PREFIX', 'AEH_' );
     }
     if ( !defined( 'AEH_VERSION' ) ) {
-        define( 'AEH_VERSION', '2.9.1' );
+        define( 'AEH_VERSION', '2.9.2' );
     }
     /* Definining main class */
     if ( !class_exists( 'AEH_Pro' ) ) {
