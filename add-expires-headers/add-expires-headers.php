@@ -5,7 +5,7 @@ Plugin Name: WP Speed Optimization By Add Expires Headers & Optimized Minify Plu
 Plugin URI: http://www.addexpiresheaders.com/
 Description: This plugin will add expires headers for various types of resources of website and also help to add optimized minification and merging of resources to have better performance and speed optimization.
 Author: Passionate Brains
-Version: 2.9.2
+Version: 2.10.0
 Author URI: http://www.addexpiresheaders.com/
 License: GPLv2 or later
 */
@@ -80,7 +80,7 @@ if ( function_exists( 'dd_aeh' ) ) {
         define( 'AEH_PREFIX', 'AEH_' );
     }
     if ( !defined( 'AEH_VERSION' ) ) {
-        define( 'AEH_VERSION', '2.9.2' );
+        define( 'AEH_VERSION', '2.10.0' );
     }
     /* Definining main class */
     if ( !class_exists( 'AEH_Pro' ) ) {

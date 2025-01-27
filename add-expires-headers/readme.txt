@@ -4,7 +4,7 @@ Donate link: http://www.addexpiresheaders.com/
 Tags: speed optimization, add expires headers, minify, leverage browser caching, minify css, minify js, serve static assets, efficient cache policy, fast minify, expires headers, far future expiration, auto optimize, cache, expiry header, expiry, wp-cache, minify, gzip, etags
 Requires at least: 3.5
 Tested up to: 6.7
-Stable tag: 2.9.2
+Stable tag: 2.9.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -178,6 +178,9 @@ Updated Freemius SDK to latest stable version
 some minor bug fixed
 
 = 2.9.2 =
+Updated Freemius SDK to latest stable version
+
+= 2.10.0 =
 Updated Freemius SDK to latest stable version
 
 == Screenshots ==
