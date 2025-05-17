@@ -3,8 +3,8 @@ Contributors: passionatebrains
 Donate link: http://www.addexpiresheaders.com/
 Tags: speed optimization, add expires headers, minify, leverage browser caching, minify css, minify js, serve static assets, efficient cache policy, fast minify, expires headers, far future expiration, auto optimize, cache, expiry header, expiry, wp-cache, minify, gzip, etags
 Requires at least: 3.5
-Tested up to: 6.7
-Stable tag: 2.9.3
+Tested up to: 6.8
+Stable tag: 2.10.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
