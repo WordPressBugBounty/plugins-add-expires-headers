@@ -1,17 +1,17 @@
-=== WP Speed Optimization By Add Expires Headers & Optimized Minify Plugin ===
-Contributors: passionatebrains
+===  AEH Speed Optimization: Browser Cache, Optimized Minify, Lazy Loading & Image Optimization ===
+Contributors: passionatebrains, freemius
 Donate link: http://www.addexpiresheaders.com/
-Tags: speed optimization, add expires headers, minify, leverage browser caching, minify css, minify js, serve static assets, efficient cache policy, fast minify, expires headers, far future expiration, auto optimize, cache, expiry header, expiry, wp-cache, minify, gzip, etags
+Tags: cache, Optimize, performance, PageSpeed, core web vitals
 Requires at least: 3.5
-Tested up to: 6.8
-Stable tag: 2.10.0
+Tested up to: 6.9
+Stable tag: 3.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-This plugin will add expires headers for various types of resources of website and also help to add optimized minification and merging of resources to have better performance and speed optimization.
+AEH Speed Optimization boosts site speed with caching, minification, lazy loading, and image optimization to improve performance and SEO.
 
 == Description ==
-Plugin will improve your website loading speed by caching various types of static files in browser of User along with this it also offer minification of resources which reduce data size of page and reduce number of http requests hence improve performance of page. It is light weight plugin but its impact on page loading speed in very crucial and easy noticeable.
+AEH Speed Optimization boosts site speed with caching, minification, lazy loading, and image optimization to improve performance and SEO.
 
 = Advantages =
 1) Serves static assets with an efficient cache policy helps to leverage browser caching.
@@ -35,6 +35,16 @@ Plugin will improve your website loading speed by caching various types of stati
 10) Inline small footer CSS files which helps to improve page speed.
 
 11) Escape admin users from minification to avoid page builders related issues.
+
+12) Lazy loading support for images, iframes, and videos.
+
+13) Widgets and shortcodes can also be lazy loaded.
+
+14) Lazy loading fully supports responsive images for better performance across devices.
+
+15) Custom placeholder images can be used during lazy loading.
+
+16) Exclude critical elements from lazy loading to ensure essential visuals load immediately.
 
 = Pro Features =
 1) Ability to add expires headers to External Resources
@@ -61,6 +71,20 @@ Plugin will improve your website loading speed by caching various types of stati
 
 12) HTML minification helps to reduce overall data size of page.
 
+13) Automatically convert images to optimized formats like WebP or AVIF for faster delivery without manual effort.
+
+14) Smartly resize and serve images based on screen size and device type to minimize bandwidth and boost speed.
+
+15) Support next-gen formats like WebP and AVIF for superior compression, smaller files, and sharper visuals.
+
+16) Track image optimization stats, savings, and performance improvements directly from your WordPress dashboard.
+
+17) Automatically deliver the perfect image size for every device, ensuring crisp visuals and smooth performance.
+
+18) Optimize images without visible loss in clarity—maintaining pixel perfection while reducing file size.
+
+19) Works out-of-the-box with WordPress and major themes or plugins, no setup hassles or coding required.
+
 = Documentation =
 For Plugin documentation, please refer our <a href="https://www.addexpiresheaders.com/documentation" rel="follow">plugin website</a>.
 
@@ -74,7 +98,7 @@ For Plugin documentation, please refer our <a href="https://www.addexpiresheader
 == Installation ==
 1) Deactivate and uninstall any other expires headers plugin you may be using.
 
-2) Login as an administrator to your WordPress Admin account. Using the “Add New” menu option under the “Plugins” section of the navigation, you can either search for: "add expires headers" or if you’ve downloaded the plugin already, click the “Upload” link, find the .zip file you download and then click “Install Now”. Or you can unzip and FTP upload the plugin to your plugins directory (wp-content/plugins/).
+2) Login as an administrator to your WordPress Admin account. Using the “Add New” menu option under the “Plugins” section of the navigation, you can either search for: "AEH speed Optimization" or if you’ve downloaded the plugin already, click the “Upload” link, find the .zip file you download and then click “Install Now”. Or you can unzip and FTP upload the plugin to your plugins directory (wp-content/plugins/).
 
 3) Activate the plugin through the "Plugins" menu in the WordPress administration panel.
 
@@ -91,6 +115,8 @@ To use this plugin do the following:
 4) Once you hit "submit" button all options you selected in settings page saved database of website and accordingly .htaccess file will updated and add expires headers for respective selected files.
 
 5) For Minification check respective settings at Minification Tab of plugin settings page.
+
+6) For Lazy Loading check respective settings at Lazy Loading Tab of plugin settings page.
 
 == Frequently Asked Questions ==
 
@@ -183,6 +209,17 @@ Updated Freemius SDK to latest stable version
 = 2.10.0 =
 Updated Freemius SDK to latest stable version
 
+= 3.0.0 =
+Updated Freemius SDK to latest stable Version
+Added Lazy Loading functionality
+
+= 3.1.0 =
+Updated Freemius SDK to latest stable Version
+Tested with Latest WordPress v6.9
+Updated some code changes 
+
 == Screenshots ==
 1. Cache Settings
 2. Minify Settings
+3. Lazy Loading Settings
+4. Image Optimization (Pro)

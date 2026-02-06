@@ -5,7 +5,7 @@
 
 class Mrclay_Minify_HTML {
     protected $_jsCleanComments = true;
-    protected $_html;
+	protected $_html;
     /**
      * "Minify" an HTML page
      *

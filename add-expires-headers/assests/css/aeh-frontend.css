@@ -1,0 +1,107 @@
+/* Lazy Loading Animation Styles */
+.lazyload {
+    opacity: 0.25.2;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.lazyloaded {
+    opacity: 1;
+}
+
+/* Fade In Animation */
+.lazyload.fade-in {
+    opacity: 0.25;
+    transition: opacity 0.6s ease-in-out;
+}
+
+.lazyload.fade-in.lazyloaded {
+    opacity: 1;
+}
+
+/* Slide from Bottom Animation */
+.lazyload.slide-bottom {
+    opacity: 0.25;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+}
+
+.lazyload.slide-bottom.lazyloaded {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Slide from Right Animation */
+.lazyload.slide-right {
+    opacity: 0.25;
+    transform: translateX(30px);
+    transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+}
+
+.lazyload.slide-right.lazyloaded {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Slide from Left Animation */
+.lazyload.slide-left {
+    opacity: 0.25;
+    transform: translateX(-30px);
+    transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+}
+
+.lazyload.slide-left.lazyloaded {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Background Image Lazy Loading Animations 
+.lazyload-bg {
+    opacity: 0.25;
+    transition: opacity 0.3s ease-in-out;
+}*/
+
+.lazyload-bg.lazyloaded {
+    opacity: 1;
+}
+
+.lazyload-bg.fade-in {
+    opacity: 0.25;
+    transition: opacity 0.6s ease-in-out;
+}
+
+.lazyload-bg.fade-in.lazyloaded {
+    opacity: 1;
+}
+
+.lazyload-bg.slide-bottom {
+    opacity: 0.25;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+}
+
+.lazyload-bg.slide-bottom.lazyloaded {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.lazyload-bg.slide-right {
+    opacity: 0.25;
+    transform: translateX(30px);
+    transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+}
+
+.lazyload-bg.slide-right.lazyloaded {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.lazyload-bg.slide-left {
+    opacity: 0.25;
+    transform: translateX(-30px);
+    transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+}
+
+.lazyload-bg.slide-left.lazyloaded {
+    opacity: 1;
+    transform: translateX(0);
+}
