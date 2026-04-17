@@ -4,6 +4,9 @@ function save_lazy_loading_settings($aeh_lazy_loading_settings)
 {
     $errors = '';
     if (isset($_POST['aeh_lazy_loading_settings']['submit_form']) && wp_verify_nonce($_POST['aeh_nonce_header'], 'aeh_lazy_loading_submit')) {
+        if (! is_user_logged_in() || ! current_user_can('manage_options')) {
+            wp_send_json_error(['message' => 'Unauthorized'], 403);
+        }
         $aeh_lazy_loading_settings = esc_sql($_POST['aeh_lazy_loading_settings']);
         $aeh_lazy_loading_save_settings = AEH_Settings::parse_lazy_loading_settings($aeh_lazy_loading_settings);
         if ($aeh_lazy_loading_save_settings) {

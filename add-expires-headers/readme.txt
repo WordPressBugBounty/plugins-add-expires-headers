@@ -4,7 +4,7 @@ Donate link: http://www.addexpiresheaders.com/
 Tags: cache, Optimize, performance, PageSpeed, core web vitals
 Requires at least: 3.5
 Tested up to: 6.9
-Stable tag: 3.1.0
+Stable tag: 3.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -217,6 +217,10 @@ Added Lazy Loading functionality
 Updated Freemius SDK to latest stable Version
 Tested with Latest WordPress v6.9
 Updated some code changes 
+
+= 3.2.0 =
+Updated Freemius SDK to latest stable Version
+Latest Security Fixes
 
 == Screenshots ==
 1. Cache Settings

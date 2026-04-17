@@ -41,7 +41,6 @@ class AEH_Minify
 		$this->cachedirurl = $this->cachepath['cachedirurl'];
 		$this->site_home = site_url();
 		$this->domain = trim(str_ireplace(array('http://', 'https://'), '', trim($this->site_home, '/')));
-		/** @var AEH_Settings $this->settings */
 		$this->settings = AEH_Settings::get_instance();
 		$this->aeh_ignore = $this->settings->expires_headers_minify_default_excludes;
 		$this->pb_keywords = $this->settings->expires_headers_minify_pb_keywords;
@@ -196,7 +195,7 @@ class AEH_Minify
 		if (!is_object($wp_styles)) {
 			return false;
 		}
-		$styles = clone ($wp_styles);
+		$styles = clone($wp_styles);
 		return $styles;
 	}
 
@@ -920,7 +919,7 @@ class AEH_Minify
 
 	public function aeh_purge_minify_on_update()
 	{
-		if ((current_user_can('manage_options') && isset($_POST['aeh_min_save_options'])) || (isset($_GET['_aehcache']) && wp_verify_nonce($_GET['_wpnonce'], 'aeh_purge_nonce'))) {
+		if ((current_user_can('manage_options') && isset($_POST['aeh_min_save_options'])) || (isset($_GET['_aehcache']) && current_user_can('manage_options') && wp_verify_nonce($_GET['_wpnonce'], 'aeh_purge_nonce'))) {
 			$this->aeh_purge_all();
 			$this->aeh_purge_others();
 			add_action('admin_notices', function () {

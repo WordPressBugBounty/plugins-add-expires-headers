@@ -50,8 +50,8 @@ class AEH_Admin
   /* registering scripts */
   private function register_scripts()
   {
-    wp_register_style('aeh_material_css', AEH_URL . 'assests/css/materialize.min.css', false, null);
-    wp_register_style('aeh_css', AEH_URL . 'assests/css/aeh.css', false, null);
+    wp_register_style('aeh_material_css', AEH_URL . 'assests/css/materialize.min.css', array(), false);
+    wp_register_style('aeh_css', AEH_URL . 'assests/css/aeh.css', array(), false);
     wp_register_style('aeh_icons', 'https://fonts.googleapis.com/icon?family=Material+Icons');
     wp_register_script('aeh_material_js', AEH_URL . 'assests/js/materialize.min.js', array('jquery'), null, true);
     wp_register_script('aeh_js', AEH_URL . 'assests/js/aeh.js', array('jquery'), null, true);

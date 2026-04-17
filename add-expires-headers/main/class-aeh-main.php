@@ -18,7 +18,7 @@ class AEH_Main
 		$this->settings = AEH_Settings::get_instance();
 		add_action('admin_notices', array($this, 'add_review_request'));
 		add_action('wp_ajax_hide_review_notice', array($this, 'hide_review_request'));
-		add_action('wp_ajax_nopriv_hide_review_notice', array($this, 'hide_review_request'));
+		//add_action('wp_ajax_nopriv_hide_review_notice', array($this, 'hide_review_request'));
 		add_action('refresh_cache', array($this, 'refresh_browser_cache'));
 		add_action('wp_ajax_purge_cache', array($this, 'refresh_browser_cache'));
 		add_action('wp_ajax_nopriv_purge_cache', array($this, 'refresh_browser_cache'));
@@ -56,7 +56,7 @@ class AEH_Main
 			</div>';
 			}
 		} else {
-			update_option('review_request_time', strtotime(date('d-m-Y H:i:s') . "+ 48 hours"));
+			update_option('review_request_time', strtotime(date('d-m-Y H:i:s') . "+ 720 hours"));
 		}
 	}
 
@@ -64,10 +64,16 @@ class AEH_Main
 	{
 		$nonce = $_REQUEST['security'];
 		if (wp_verify_nonce($nonce, 'maybelater-nonce')) {
-			update_option('review_request_time', strtotime(date('d-m-Y H:i:s') . "+ 240 hours"));
+			if (! is_user_logged_in() || ! current_user_can('manage_options')) {
+				wp_send_json_error(['message' => 'Unauthorized'], 403);
+			}
+			update_option('review_request_time', strtotime(date('d-m-Y H:i:s') . "+ 720 hours"));
 		}
 		if (wp_verify_nonce($nonce, 'alreadydid-nonce')) {
-			update_option('review_request_time', strtotime(date('d-m-Y H:i:s') . "+ 2400 hours"));
+			if (! is_user_logged_in() || ! current_user_can('manage_options')) {
+				wp_send_json_error(['message' => 'Unauthorized'], 403);
+			}
+			update_option('review_request_time', strtotime(date('d-m-Y H:i:s') . "+ 7200 hours"));
 		}
 	}
 
@@ -196,60 +202,6 @@ class AEH_Main
 		}
 		$rules = '';
 		$aeh_expires_headers_settings = get_option('aeh_expires_headers_settings');
-		if (dd_aeh()->is()) {
-			$aeh_expires_headers_advance_settings = get_option('aeh_expires_headers_advance_settings');
-			$aeh_expires_headers_last_modified_time = get_option('aeh_expires_headers_last_modified_time');
-		}
-		if (dd_aeh()->is()) {
-			if (dd_aeh()->can_use_premium_code()) {
-				if (isset($aeh_expires_headers_advance_settings['advance']['unset_entity_tag'])) {
-					$rules .= '# Disable ETags' . PHP_EOL;
-					$rules .= '<IfModule mod_headers.c>' . PHP_EOL;
-					$rules .= 'Header unset ETag' . PHP_EOL;
-					$rules .= '</IfModule>' . PHP_EOL;
-					$rules .= 'FileETag None' . PHP_EOL;
-					$rules .= '#' . date(DATE_RFC822) . ' Disable ETags' . PHP_EOL;
-				}
-				if (isset($aeh_expires_headers_advance_settings['advance']['refresh_cache'])) {
-					if ($aeh_expires_headers_last_modified_time == false || empty($aeh_expires_headers_last_modified_time)) {
-						update_option('aeh_expires_headers_last_modified_time', date(DATE_RFC822));
-						$rules .= '# checking' . date(DATE_RFC822);
-						$aeh_expires_headers_last_modified_time = date(DATE_RFC822);
-					}
-					$rules .= '# Adding Last-modified Headers' . PHP_EOL;
-					$rules .= '<IfModule mod_headers.c>' . PHP_EOL;
-					$rules .= 'Header Set Last-Modified "' . $aeh_expires_headers_last_modified_time . '" ' . PHP_EOL;
-					$rules .= '</IfModule>' . PHP_EOL;
-					$rules .= '# Adding Last-modified Headers' . PHP_EOL;
-				}
-				if (isset($aeh_expires_headers_advance_settings['advance']['enable_gzip_compression'])) {
-					$rules .= '# Enabling File Compression' . PHP_EOL;
-					$rules .=        '<IfModule mod_deflate.c>
-											AddOutputFilterByType DEFLATE text/html
-											AddOutputFilterByType DEFLATE text/css
-											AddOutputFilterByType DEFLATE text/javascript
-											AddOutputFilterByType DEFLATE text/xml
-											AddOutputFilterByType DEFLATE text/plain
-											AddOutputFilterByType DEFLATE image/x-icon
-											AddOutputFilterByType DEFLATE image/svg+xml
-											AddOutputFilterByType DEFLATE application/rss+xml
-											AddOutputFilterByType DEFLATE application/javascript
-											AddOutputFilterByType DEFLATE application/x-javascript
-											AddOutputFilterByType DEFLATE application/xml
-											AddOutputFilterByType DEFLATE application/xhtml+xml
-											AddOutputFilterByType DEFLATE application/x-font
-											AddOutputFilterByType DEFLATE application/x-font-truetype
-											AddOutputFilterByType DEFLATE application/x-font-ttf
-											AddOutputFilterByType DEFLATE application/x-font-otf
-											AddOutputFilterByType DEFLATE application/x-font-opentype
-											AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
-											AddOutputFilterByType DEFLATE font/otf
-											AddOutputFilterByType DEFLATE font/opentype
-											</IfModule>' . PHP_EOL;
-					$rules .= '# Enabling File Compression' . PHP_EOL;
-				}
-			}
-		}
 		$rules .= '<IfModule mod_expires.c>' . PHP_EOL;
 		$rules .= 'ExpiresActive on' . PHP_EOL;
 		$general_settings = $this->settings->expires_headers_general_settings;
@@ -266,23 +218,6 @@ class AEH_Main
 			}
 		}
 		$rules .= '</IfModule>' . PHP_EOL;
-		if (dd_aeh()->is()) {
-			if (dd_aeh()->can_use_premium_code()) {
-				if (!empty($aeh_expires_headers_advance_settings["prevent_cache"])) {
-					$prevent_string = preg_replace('/\s+/', '', $aeh_expires_headers_advance_settings["prevent_cache"]);
-					$prevent_string = str_replace(",", "|", $prevent_string);
-					$rules .= '<FilesMatch "^(' . $prevent_string . ')$">' . PHP_EOL;
-					$rules .= 'FileETag None' . PHP_EOL;
-					$rules .= '<IfModule mod_headers.c>' . PHP_EOL;
-					$rules .= 'Header unset ETag' . PHP_EOL;
-					$rules .= 'Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"' . PHP_EOL;
-					$rules .= 'Header set Pragma "no-cache"' . PHP_EOL;
-					$rules .= ' Header set Expires "Wed, 11 Jan 1984 05:00:00 GMT"' . PHP_EOL;
-					$rules .= '</IfModule>' . PHP_EOL;
-					$rules .= '</FilesMatch>' . PHP_EOL;
-				}
-			}
-		}
 		if ($rules != '') {
 			$rules = "# BEGIN AEH: Speed Optimization Plugin" . PHP_EOL . $rules . "# END AEH: Speed Optimization Plugin" . PHP_EOL;
 		}
