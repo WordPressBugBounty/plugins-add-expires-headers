@@ -20,8 +20,17 @@ class AEH_Main
 		add_action('wp_ajax_hide_review_notice', array($this, 'hide_review_request'));
 		//add_action('wp_ajax_nopriv_hide_review_notice', array($this, 'hide_review_request'));
 		add_action('refresh_cache', array($this, 'refresh_browser_cache'));
-		add_action('wp_ajax_purge_cache', array($this, 'refresh_browser_cache'));
-		add_action('wp_ajax_nopriv_purge_cache', array($this, 'refresh_browser_cache'));
+		add_action('wp_ajax_purge_cache', array($this, 'click_refresh_browser_cache'));
+		//add_action('wp_ajax_nopriv_purge_cache', array($this, 'refresh_browser_cache'));
+	}
+	
+	public function click_refresh_browser_cache()
+	{
+		check_ajax_referer('purge-cache-nonce', 'security');
+		if (! is_user_logged_in() || ! current_user_can('manage_options')) {
+			wp_send_json_error(['message' => 'Unauthorized'], 403);
+		}
+		$this->refresh_browser_cache();
 	}
 	public function refresh_browser_cache()
 	{
