@@ -5,7 +5,7 @@ Plugin Name: AEH Speed Optimization: Browser Cache, Optimized Minify, Lazy Loadi
 Plugin URI: http://www.addexpiresheaders.com/
 Description: AEH Speed Optimization boosts site speed with caching, minification, lazy loading, and image optimization to improve performance and SEO.
 Author: Passionate Brains
-Version: 3.3.0
+Version: 3.4.0
 Author URI: http://www.addexpiresheaders.com/
 License: GPLv2 or later
 */
@@ -75,7 +75,7 @@ if (function_exists('dd_aeh')) {
         define('AEH_PREFIX', 'AEH_');
     }
     if (!defined('AEH_VERSION')) {
-        define('AEH_VERSION', '3.3.0');
+        define('AEH_VERSION', '3.4.0');
     }
     /* Definining main class */
     if (!class_exists('AEH_Pro')) {
